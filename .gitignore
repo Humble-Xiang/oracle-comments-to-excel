@@ -1,0 +1,16 @@
+.DS_STORE
+
+dist/
+bin/
+node_modules/
+
+# Include when developing application packages.
+.vscode/launch.json
+.vscode/settings.json
+.vscode/tasks.json
+
+# Ignore .history for the xyz.local-history VSCode extension
+.history/
+
+# Husky
+.husky/_

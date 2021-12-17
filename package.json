@@ -1,0 +1,50 @@
+{
+  "name": "@humble.xiang/oc2e",
+  "version": "0.0.1",
+  "description": "一个将Oracle各个表注释导出成Excel的命令行工具",
+  "main": "dist/index.js",
+  "author": "Humble.X",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "npx tsc && node dist/index.js",
+    "lint": "eslint src --ext .ts",
+    "test": "jest",
+    "pkg": "npx tsc && pkg . -t node16-macos-x64 && pkg . -t node16-win-x64 ",
+    "prepare": "husky install"
+  },
+  "bin": {
+    "oc2e": "dist/index.js"
+  },
+  "pkg": {
+    "outputPath": "bin",
+    "scripts": "dist/**/*.js"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.11",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "jest": "^27.4.3",
+    "pkg": "^5.5.1",
+    "prettier": "^2.5.0",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "commander": "^8.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Humble-Xiang/oracle-comments-to-excel"
+  },
+  "files": [
+    "/dist"
+  ]
+}
