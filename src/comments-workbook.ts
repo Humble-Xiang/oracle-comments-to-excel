@@ -30,14 +30,16 @@ export default class CommentsWorkbook {
     this.tableNames = result.rows.filter(row => row[1] === 'TABLE').map(row => row[0].toString());
     toc.addTable({
       name: 'toc',
-      ref: 'A1',
+      ref: 'A2',
       headerRow: true,
       columns: [{ name: '表名' }, { name: '类型' }, { name: '注释' }],
       rows: result.rows,
     });
+    toc.mergeCells('A1:C1');
+    toc.getCell('A1').value = '目录';
     this._setTableStyle(toc);
     toc.getColumn(1).eachCell?.((cell: Cell, rowNumber) => {
-      if (rowNumber !== 1) {
+      if (rowNumber > 2) {
         cell.value = { text: cell.text, hyperlink: `#'${cell.text}'!A1` };
         cell.style.font = { underline: 'single', color: { argb: '5780C7' }, italic: true };
       }
@@ -68,11 +70,13 @@ export default class CommentsWorkbook {
     }
     sheet.addTable({
       name: tableName,
-      ref: 'A1',
+      ref: 'A2',
       headerRow: true,
       columns: [{ name: '字段名' }, { name: '字段类型' }, { name: '注释' }],
       rows: result.rows,
     });
+    sheet.mergeCells('A1:C1');
+    sheet.getCell('A1').value = tableName;
     this._setTableStyle(sheet);
     sheet.getCell('D1').value = { text: '返回目录', hyperlink: `#'目录'!A1` };
     sheet.getCell('D1').style.font = { underline: 'single', color: { argb: '5780C7' }, italic: true };
@@ -82,7 +86,9 @@ export default class CommentsWorkbook {
     this._autosizeColumnCells(sheet.getColumn(1), (max: number) => max + 4);
     this._autosizeColumnCells(sheet.getColumn(2));
     this._autosizeColumnCells(sheet.getColumn(3), (max: number) => max * 1.5);
-    sheet.getRow(1).eachCell?.((cell: Cell) => {
+    sheet.getCell('A1').style.font = { bold: true, size: 15 };
+    sheet.getCell('A1').style.alignment = { vertical: 'middle', horizontal: 'center' };
+    sheet.getRow(2).eachCell?.((cell: Cell) => {
       cell.style.font = { color: { argb: 'EDECF9' }, bold: true, size: 14 };
       cell.style.alignment = { vertical: 'middle', horizontal: 'center' };
     });

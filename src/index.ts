@@ -4,7 +4,7 @@ import oracledb from 'oracledb';
 import CommentsWorkbook from './comments-workbook';
 
 program
-  .version('0.0.2')
+  .version('0.0.3')
   .addHelpText(
     'after',
     `
