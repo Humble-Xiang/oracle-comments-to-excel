@@ -1,6 +1,6 @@
 {
   "name": "@humble.xiang/oc2e",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "一个将Oracle各个表注释导出成Excel的命令行工具",
   "main": "dist/index.js",
   "author": "Humble.X",
